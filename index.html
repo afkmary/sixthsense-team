@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sixth Sense · Capstone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: the capstone poster, extended — confident, technical, few words per block
+   IDEA: a night-shift operations console that a visitor scans from the poster's QR code
+   PICTURE: the real All Clients screen, tilted on the poster's grid-and-glow sky
+   COLOUR and TYPE: navy #0D1F3A to #050C18, blue #2563EB/#60A5FA, Vencer pink-to-blue gradient; Open Sans with Montserrat caps headings
+   LAYOUT: one column on phones; hero, team, project, in use, built with, references */
+:root{color-scheme:dark;--bg:#050C18;--panel:rgba(255,255,255,.05);--line:rgba(148,187,255,.22);--ink:#F0F4FF;--soft:#AEB9CE;--blue:#2563EB;--sky:#60A5FA;--teal:#00C9B8;--grad:linear-gradient(90deg,#FF00A3,#0058F1)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Open Sans',system-ui,sans-serif;overflow-x:clip}
+.sky{position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(60vmax 60vmax at 8% 4%,rgba(37,99,235,.32),transparent 60%),
+ radial-gradient(50vmax 50vmax at 100% 45%,rgba(233,30,140,.16),transparent 60%),
+ radial-gradient(60vmax 60vmax at 80% 100%,rgba(109,40,217,.32),transparent 60%),
+ radial-gradient(120% 70% at 50% 0,#0D1F3A 0,#050C18 70%)}
+.sky::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(148,187,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(148,187,255,.07) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(120% 70% at 50% 20%,#000 20%,transparent 75%);mask-image:radial-gradient(120% 70% at 50% 20%,#000 20%,transparent 75%)}
+.sky::after{content:"";position:absolute;top:-30vmax;right:-30vmax;width:70vmax;height:70vmax;background:repeating-radial-gradient(circle,rgba(96,165,250,.2) 0 1px,transparent 1px 26px);-webkit-mask-image:radial-gradient(circle,#000 30%,transparent 60%);mask-image:radial-gradient(circle,#000 30%,transparent 60%)}
+a{color:var(--sky)}a:hover{color:#93BBFE}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(5vw,18px)}
+.band{padding:clamp(40px,6vw,88px) 0}
+header{position:sticky;top:0;z-index:5;background:rgba(5,12,24,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-block:8px}
+.logos{display:flex;align-items:center;gap:14px}.logos img{height:26px;width:auto;display:block}.logos i{width:1px;height:26px;background:var(--line)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:10px;min-height:44px;display:inline-flex;align-items:center}
+nav a:hover{background:var(--panel);color:#fff}
+h1{font-weight:800;font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 span,.grad{background:linear-gradient(90deg,#3B82F6,#60A5FA);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:Montserrat,'Open Sans',sans-serif;font-weight:800;font-size:clamp(22px,3vw,30px);letter-spacing:.1em;text-transform:uppercase;margin:0 0 24px;display:flex;align-items:center;gap:14px}
+h2::before{content:"";width:8px;height:1.3em;border-radius:99px;background:linear-gradient(180deg,#FF00A3,#0058F1);flex:none}
+h3{margin:0 0 6px;font-size:20px;line-height:1.25}
+p{margin:0}.soft{color:var(--soft)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:center}
+.hero .lede{font-size:clamp(17px,2vw,20px);color:#C9D4EA;margin-top:18px;max-width:34em}
+.team-tag{display:inline-flex;gap:10px;align-items:center;margin-bottom:20px;font-weight:700;color:#fff;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:8px 16px 8px 8px}
+.team-tag b{background:var(--grad);border-radius:99px;padding:3px 12px;font-size:13px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font-weight:700;text-decoration:none;color:#fff;background:var(--blue);border:1px solid transparent}
+.btn:hover{background:#1D4ED8;color:#fff}.btn.ghost{background:var(--panel);border-color:var(--line)}.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.shot{border-radius:18px;border:8px solid #111827;box-shadow:0 0 0 1px rgba(148,187,255,.3),0 30px 80px rgba(37,99,235,.45);display:block;width:100%;height:auto}
+.tilt{transform:perspective(1800px) rotateY(-10deg) rotateX(3deg)}
+@media (prefers-reduced-motion:no-preference){.tilt{transition:transform .6s ease}.tilt:hover{transform:none}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:24px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.person{display:flex;flex-direction:column;gap:14px}
+.avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:22px;background:#0D1F3A;box-shadow:0 0 0 3px #050C18,0 0 0 5px transparent;position:relative}
+.avatar::after{content:"";position:absolute;inset:-4px;border-radius:50%;padding:2px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.role{color:var(--sky);font-weight:700;font-size:15px}
+.li{margin-top:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:700;text-decoration:none}
+.li.off{color:var(--soft);font-weight:600}
+.meta{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:16px}
+.meta .card{display:flex;gap:16px;align-items:center}
+.meta small{display:block;color:var(--soft);font-size:13px;font-weight:700;letter-spacing:.04em}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.summary p{font-size:17px;line-height:1.7;max-width:68ch}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 16px;display:flex;flex-direction:column;gap:10px}
+.steps li::before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-weight:800}
+.steps b{font-size:17px}.steps span{color:var(--soft);font-size:15px;line-height:1.45}
+.trust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px}
+.trust div{padding:8px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.trust div+div{border-left:1px solid var(--line)}
+.trust svg{width:40px;height:40px;color:var(--teal)}
+.trust b{font-size:18px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tiles span,.chips span{font-size:14px;font-weight:600;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+ul.ticks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ul.ticks li{display:flex;gap:12px;align-items:flex-start}
+ul.ticks li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:50%;background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23050C18' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+.gallery figure{flex:0 0 min(88%,760px);scroll-snap-align:start;margin:0}
+.gallery figcaption{margin-top:12px;color:var(--soft);font-size:15px}.gallery figcaption b{color:var(--ink)}
+.gnav{display:flex;gap:8px;justify-content:flex-end;margin-bottom:12px}
+.gnav button{width:44px;height:44px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:#fff;font-size:20px;cursor:pointer}
+.gnav button:hover{background:rgba(255,255,255,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chips span{font-size:16px;padding:12px 18px;border-radius:99px}
+ol.refs{margin:0;padding-left:22px;display:grid;gap:10px}ol.refs li{padding-left:4px}
+.note{font-size:13px;color:var(--soft);margin-top:12px}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--soft);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.steps{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.tilt{transform:none}}
+@media (max-width:600px){.two,.trust{grid-template-columns:1fr}.trust div+div{border-left:0;border-top:1px solid var(--line);padding-top:20px;margin-top:12px}nav a{padding:10px 8px;font-size:14px}.logos img{height:22px}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap bar">
+    <div class="logos"><img src="assets/sait-logo.svg" alt="SAIT"><i></i><img src="assets/vencer-logo.svg" alt="Vencer Group"></div>
+    <nav aria-label="Sections"><a href="#team">Team</a><a href="#project">Project</a><a href="#in-use">In use</a><a href="#references">References</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="band">
+    <div class="wrap hero">
+      <div>
+        <div class="team-tag"><b>Team</b>Sixth Sense</div>
+        <h1>From Hours of Assembly to <span>Minutes of Checking</span></h1>
+        <p class="lede">The Vencer Operations Dashboard gathers every client's IT health from about a dozen platforms, so quarterly reviews are checked, not hand-built.</p>
+        <div class="cta"><a class="btn" href="#team">Meet the team</a><a class="btn ghost" href="#project">How it works</a></div>
+      </div>
+      <img class="shot tilt" src="assets/all-clients.webp" width="1924" height="1077" alt="All Clients screen rating ten clients as Healthy, Watch or At risk across six categories">
+    </div>
+  </section>
+
+  <section class="band" id="team">
+    <div class="wrap">
+      <h2>Meet the team</h2>
+      <div class="grid" id="people"></div>
+      <div class="meta">
+        <div class="card"><div><small>INSTRUCTOR</small><b id="instructor"></b></div></div>
+        <div class="card"><div><small>INDUSTRY SPONSOR</small><b>Thomas Gorczynski</b><div class="soft">Solutions Engineer, Vencer Group Inc.</div></div></div>
+        <div class="card"><div><small>COURSE</small><b>PROJ 309-SD, Fall 2026</b><div class="soft">Software Development, SAIT</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="project">
+    <div class="wrap">
+      <h2>Summary</h2>
+      <div class="summary card"><p>Vencer Group is a Calgary managed IT provider that reviews each of its 10–20 clients every quarter, showing what they got for their money and what needs attention next. The evidence for those reviews sits in about a dozen vendor platforms that do not share data, so each review took hours of logging in and copying numbers by hand. We built the Vencer Operations Dashboard, an internal web application that collects this data on a schedule, keeps every reading, and rates each client Healthy, Watch or At risk across six categories. Staff can see which client needs attention from one screen, open the figures behind any rating, and generate a draft quarterly review that a person checks and approves before exporting it to Word.</p></div>
+
+      <div class="two" style="margin-top:48px">
+        <div class="card">
+          <h2 style="font-size:22px">The problem</h2>
+          <p>About a dozen platforms that don't share data, copied by hand for hours per client. Figures came out differently each quarter, so reviews were often skipped.</p>
+          <div class="tiles" id="sources"></div>
+        </div>
+        <div class="card">
+          <h2 style="font-size:22px">Key results</h2>
+          <ul class="ticks" id="results"></ul>
+        </div>
+      </div>
+
+      <h2 style="margin-top:56px">How it works</h2>
+      <ol class="steps" id="steps"></ol>
+      <div class="trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><b>Read-only</b><span class="soft">Never changes live systems</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><b>Reproducible history</b><span class="soft">Past reports reproduced exactly</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/><path d="M8 11h6M11 8v6"/></svg><b>Traceable data</b><span class="soft">Every figure shows its source and age</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="in-use">
+    <div class="wrap">
+      <h2>In use</h2>
+      <div class="gnav"><button type="button" id="prev" aria-label="Previous screenshot">‹</button><button type="button" id="next" aria-label="Next screenshot">›</button></div>
+      <div class="gallery" id="gallery" tabindex="0" aria-label="Dashboard screenshots"></div>
+      <p class="note">Screenshots use invented client data to protect client privacy.</p>
+    </div>
+  </section>
+
+  <section class="band" id="built-with">
+    <div class="wrap">
+      <h2>Built with</h2>
+      <div class="chips" id="tech"></div>
+    </div>
+  </section>
+
+  <section class="band" id="references">
+    <div class="wrap two">
+      <div class="card">
+        <h2 style="font-size:22px">References</h2>
+        <ol class="refs" id="refs"></ol>
+      </div>
+      <div class="card">
+        <h2 style="font-size:22px">Special thanks</h2>
+        <p>To Thomas Gorczynski and the team at Vencer Group Inc. for sponsoring this project and sharing how their quarterly reviews really work, and to our instructor for their guidance throughout the term.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Team Sixth Sense · Software Development, SAIT · PROJ 309-SD, Fall 2026</span><span>Built for Vencer Group Inc.</span></div>
+</footer>
+
+<script>
+{
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const INSTRUCTOR = 'Instructor name';
+  const PEOPLE = [
+    {name:'Mary Garcia', role:'Frontend', blurb:'Built the React dashboards, client screens and report views.', linkedin:''},
+    {name:'Teammate name', role:'Back end', blurb:'Built the scheduled collectors, database and calculation layer.', linkedin:''},
+    {name:'Teammate name', role:'IT', blurb:'Connected the vendor platforms and set up the Vencer server.', linkedin:''},
+    {name:'Teammate name', role:'AI integration', blurb:'Set up the local Qwen model that drafts the report wording.', linkedin:''}
+  ];
+  const initials = n => n.split(/\s+/).map(w => w[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('instructor').textContent = INSTRUCTOR;
+  document.getElementById('people').innerHTML = PEOPLE.map(p => `
+    <article class="card person">
+      <div class="avatar" aria-hidden="true">${esc(initials(p.name))}</div>
+      <div><h3>${esc(p.name)}</h3><div class="role">${esc(p.role)} · Software Development</div></div>
+      <p class="soft">${esc(p.blurb)}</p>
+      ${p.linkedin ? `<a class="li" href="${esc(p.linkedin)}">LinkedIn profile ›</a>` : `<span class="li off">LinkedIn coming soon</span>`}
+    </article>`).join('');
+
+  const SOURCES = ['Ticketing','Device management','Patching','Endpoint protection','Email security','Identity & MFA','Server backup','Cloud backup','Documentation','Security training','Warranty','Licensing'];
+  document.getElementById('sources').innerHTML = SOURCES.map(s => `<span>${esc(s)}</span>`).join('');
+
+  const RESULTS = ['Six categories rated for every client, each opening the figures behind it.','Every figure shows its source, its age and its change since last quarter.','Clients are matched across platforms once, then remembered.','One-click QBR draft that staff check, approve and export to Word.','Read-only by design, running on Vencer’s private server.'];
+  document.getElementById('results').innerHTML = RESULTS.map(r => `<li>${esc(r)}</li>`).join('');
+
+  const STEPS = [['Collect','Scheduled jobs read each vendor platform.'],['Calculate','Figures become Healthy, Watch or At risk ratings.'],['Dashboard','All clients on one screen, then one client in depth.'],['AI draft','A local Qwen model words the figures it is given.'],['Staff approves','A person edits, approves and exports to Word.']];
+  document.getElementById('steps').innerHTML = STEPS.map(([t,d]) => `<li><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join('');
+
+  const SHOTS = [['all-clients.webp','All clients.','Every client rated across six categories, with any rating opening its evidence.'],['client-detail.webp','One client.','Figures, thresholds and the change since last quarter.'],['qbr-report.webp','Quarterly review.','A drafted status board and report, approved before export.']];
+  document.getElementById('gallery').innerHTML = SHOTS.map(([f,t,d]) => `<figure><img class="shot" src="assets/${f}" width="1924" height="1077" alt="${esc(t+' '+d)}" loading="lazy"><figcaption><b>${esc(t)}</b> ${esc(d)}</figcaption></figure>`).join('');
+  const g = document.getElementById('gallery');
+  const step = dir => { const w = g.querySelector('figure')?.getBoundingClientRect().width || 300; g.scrollBy({left: dir * (w + 16), behavior: 'smooth'}); };
+  document.getElementById('prev').addEventListener('click', () => step(-1));
+  document.getElementById('next').addEventListener('click', () => step(1));
+  g.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') step(-1); if (e.key === 'ArrowRight') step(1); });
+
+  const TECH = ['React','Vite','Python','PostgreSQL','Docker','Linux','Qwen (local LLM)'];
+  document.getElementById('tech').innerHTML = TECH.map(t => `<span>${esc(t)}</span>`).join('');
+
+  const REFS = [
+    ['Vencer Group Inc. Vencer Operations Dashboard: capstone project proposal, 2026.', ''],
+    ['React documentation', 'https://react.dev'],
+    ['Vite documentation', 'https://vite.dev'],
+    ['Python documentation', 'https://docs.python.org/3/'],
+    ['PostgreSQL documentation', 'https://www.postgresql.org/docs/'],
+    ['Docker documentation', 'https://docs.docker.com'],
+    ['Qwen models', 'https://github.com/QwenLM']
+  ];
+  document.getElementById('refs').innerHTML = REFS.map(([t,u]) => `<li>${u ? `<a href="${esc(u)}">${esc(t)}</a>` : esc(t)}</li>`).join('');
+}
+</script>
+</body>
+</html>
