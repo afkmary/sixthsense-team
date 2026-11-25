@@ -117,7 +117,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div>
           <p>Vencer Group is a Calgary managed IT provider. Companies pay Vencer to run their IT, from laptops and servers to networks, email security and backups.</p>
           <p>Every quarter, Vencer sits down with each client to show what they got for their money and what needs attention next.</p>
-          <a class="more" href="https://www.vencergroup.com">Visit vencergroup.com ›</a>
+          <a class="more" href="https://www.vencergroup.com" target="_blank" rel="noopener noreferrer">Visit vencergroup.com ›</a>
         </div>
       </div>
     </div>
@@ -143,7 +143,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <button class="avatar" type="button" aria-label="${esc(p.name)} avatar"><img src="assets/avatars/${esc(p.slug)}.svg" alt="" width="116" height="116"></button>
       <div><h3>${esc(p.name)}</h3><div class="prog">${esc(p.prog)}</div></div>
       <span class="role">${esc(p.role)}</span>
-      <a class="li" href="${esc(p.url)}" aria-label="${esc(p.name)} on LinkedIn"><b>${LI}</b><span>LinkedIn</span></a>
+      <a class="li" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} on LinkedIn (opens in a new tab)"><b>${LI}</b><span>LinkedIn</span></a>
     </article>`).join('');
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
