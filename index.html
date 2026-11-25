@@ -37,7 +37,7 @@ nav a:hover{background:rgba(255,255,255,.07)}
 .kicker{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:#C9D4EA;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:8px 16px}
 .kicker b{width:8px;height:8px;border-radius:50%;background:#00C9B8;box-shadow:0 0 0 0 rgba(0,201,184,.6);animation:live 2s infinite}
 @keyframes live{70%{box-shadow:0 0 0 10px rgba(0,201,184,0)}100%{box-shadow:0 0 0 0 rgba(0,201,184,0)}}
-h1{font-weight:800;font-size:clamp(48px,11vw,112px);line-height:.98;letter-spacing:-.03em;margin:0}
+h1{font-family:Montserrat,'Open Sans',sans-serif;font-weight:800;font-size:clamp(44px,10.5vw,104px);line-height:1;letter-spacing:-.02em;margin:0}
 h1 .w{display:inline-block}
 h1 .grad{background:linear-gradient(90deg,#FF4FC1,#3B82F6 55%,#60A5FA);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:sheen 6s ease-in-out infinite alternate}
 @keyframes sheen{to{background-position:100% 0}}
@@ -53,28 +53,22 @@ h2::before{content:"";width:8px;height:1.3em;border-radius:99px;background:linea
 .card::before{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(96,165,250,.16),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .card:hover{border-color:rgba(148,187,255,.45);box-shadow:0 18px 50px rgba(37,99,235,.25)}.card:hover::before{opacity:1}
 .card.pressed{transform:scale(.97)}
-.person{display:flex;flex-direction:column;gap:16px;text-align:left}
-.avatar{position:relative;isolation:isolate;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:26px;background:#0D1F3A;cursor:pointer;user-select:none;border:0;color:#fff;font-family:inherit}
-.avatar::before{content:"";position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from var(--a,0deg),#FF00A3,#0058F1,#60A5FA,#FF00A3);z-index:-1;animation:spin 6s linear infinite}
-.avatar::after{content:"";position:absolute;inset:-1px;border-radius:50%;background:#0D1F3A;z-index:-1}
-.avatar span{position:relative}
+.person{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:28px 22px}
+.avatar{position:relative;isolation:isolate;width:116px;height:116px;border-radius:50%;padding:0;border:0;background:transparent;cursor:pointer;user-select:none;margin-bottom:4px}
+.avatar img{position:relative;width:100%;height:100%;border-radius:50%;display:block;background:linear-gradient(145deg,#E6EEFF,#FCE4F3);box-shadow:0 0 0 4px #0D1F3A}
+.avatar::before{content:"";position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(from var(--a,0deg),#FF00A3,#0058F1,#60A5FA,#FF00A3);z-index:-1;animation:spin 6s linear infinite}
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes spin{to{--a:360deg}}
 .avatar.squish{animation:squish .55s cubic-bezier(.3,1.6,.5,1)}
 @keyframes squish{30%{transform:scale(1.18,.82)}55%{transform:scale(.9,1.1)}75%{transform:scale(1.04,.96)}}
-.person h3{margin:0;font-size:22px;line-height:1.2}
-.role{display:inline-flex;align-self:flex-start;font-weight:700;font-size:14px;color:#fff;background:var(--grad);border-radius:99px;padding:4px 12px}
+.person h3{margin:0;font-family:Montserrat,'Open Sans',sans-serif;font-weight:800;font-size:21px;line-height:1.25}
+.role{display:inline-flex;font-weight:700;font-size:14px;color:#fff;background:var(--grad);border-radius:99px;padding:4px 12px}
 .prog{color:var(--soft);font-size:15px;margin-top:6px}
-.li{position:relative;overflow:hidden;margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 18px;border-radius:14px;font-weight:700;text-decoration:none;color:#fff;background:var(--blue);transition:transform .15s,background .2s}
-.li:hover{background:#1D4ED8;color:#fff}.li:active{transform:scale(.96)}
-.li svg{width:20px;height:20px;flex:none}
+.li{position:relative;overflow:hidden;margin-top:6px;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 20px 0 8px;border-radius:99px;font-weight:600;font-size:15px;text-decoration:none;color:#F0F4FF;background:rgba(255,255,255,.06);border:1px solid rgba(148,187,255,.3);transition:transform .15s,background .2s,border-color .2s}
+.li:hover{background:rgba(37,99,235,.35);border-color:rgba(148,187,255,.6);color:#fff}.li:active{transform:scale(.95)}
+.li b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#0A66C2;flex:none}.li svg{width:15px;height:15px;color:#fff}
 .li .rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
 @keyframes rip{to{transform:scale(4);opacity:0}}
-.mentor{display:flex;align-items:center;gap:18px;margin-top:16px}
-.mentor small{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--sky)}
-.mentor b{font-size:20px}
-.badge{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(96,165,250,.14);flex:none}
-.badge svg{width:28px;height:28px;color:var(--sky)}
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(20px,4vw,48px);align-items:center}
 .about img{width:min(100%,360px);height:auto;display:block}
 .about p{font-size:clamp(17px,2vw,19px);color:#DCE4F3;margin:0 0 14px}
@@ -112,10 +106,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="wrap">
       <h2 class="reveal">Meet the team</h2>
       <div class="grid" id="people"></div>
-      <div class="card mentor reveal" style="--d:.1s">
-        <div class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div>
-        <div><small>INSTRUCTOR</small><b>Olusola Akinbode</b></div>
-      </div>
     </div>
   </section>
 
@@ -142,19 +132,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 {
   const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const PEOPLE = [
-    {name:'Mary Garcia', role:'Frontend', prog:'Software Development', url:'https://www.linkedin.com/in/afkmary/'},
-    {name:'Jared Lopez', role:'AI integration', prog:'Software Development', url:'https://www.linkedin.com/in/jared-lopez-858248354/'},
-    {name:'Jay Vincent Layco', role:'Back end', prog:'Software Development', url:'https://www.linkedin.com/in/jay-vincent-layco-39184116b/'},
-    {name:'Muhammad Khalil', role:'IT', prog:'Information Technology Services', url:'https://www.linkedin.com/in/muhammad-khalil-5a18b4197/'}
+    {slug:'mary-garcia', name:'Mary Garcia', role:'Frontend', prog:'Software Development', url:'https://www.linkedin.com/in/afkmary/'},
+    {slug:'jared-lopez', name:'Jared Lopez', role:'AI integration', prog:'Software Development', url:'https://www.linkedin.com/in/jared-lopez-858248354/'},
+    {slug:'jay-vincent-layco', name:'Jay Vincent Layco', role:'Back end', prog:'Software Development', url:'https://www.linkedin.com/in/jay-vincent-layco-39184116b/'},
+    {slug:'muhammad-khalil', name:'Muhammad Khalil', role:'IT', prog:'Information Technology Services', url:'https://www.linkedin.com/in/muhammad-khalil-5a18b4197/'}
   ];
   const LI = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.35h-4v-4.74c0-1.13-.02-2.59-1.58-2.59-1.58 0-1.82 1.23-1.82 2.5v4.83h-4z"/></svg>';
-  const initials = n => { const p = n.split(/\s+/); return (p[0][0] + p[p.length-1][0]).toUpperCase(); };
   document.getElementById('people').innerHTML = PEOPLE.map((p, i) => `
     <article class="card person reveal" style="--d:${(i*0.08).toFixed(2)}s">
-      <button class="avatar" type="button" aria-label="${esc(p.name)}"><span>${esc(initials(p.name))}</span></button>
+      <button class="avatar" type="button" aria-label="${esc(p.name)} avatar"><img src="assets/avatars/${esc(p.slug)}.svg" alt="" width="116" height="116"></button>
       <div><h3>${esc(p.name)}</h3><div class="prog">${esc(p.prog)}</div></div>
       <span class="role">${esc(p.role)}</span>
-      <a class="li" href="${esc(p.url)}">${LI}LinkedIn</a>
+      <a class="li" href="${esc(p.url)}" aria-label="${esc(p.name)} on LinkedIn"><b>${LI}</b>Connect on LinkedIn</a>
     </article>`).join('');
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
