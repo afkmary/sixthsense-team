@@ -33,7 +33,7 @@ header{position:sticky;top:0;z-index:5;background:rgba(5,12,24,.72);backdrop-fil
 nav{display:flex;gap:2px}
 nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;padding:10px 12px;border-radius:10px;min-height:44px;display:inline-flex;align-items:center;transition:background .2s}
 nav a:hover{background:rgba(255,255,255,.07)}
-.hero{min-height:min(78svh,720px);display:flex;flex-direction:column;justify-content:center;gap:20px}
+.hero{padding-top:clamp(16px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:20px}
 .kicker{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:#C9D4EA;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:8px 16px}
 .kicker b{width:8px;height:8px;border-radius:50%;background:#00C9B8;box-shadow:0 0 0 0 rgba(0,201,184,.6);animation:live 2s infinite}
 @keyframes live{70%{box-shadow:0 0 0 10px rgba(0,201,184,0)}100%{box-shadow:0 0 0 0 rgba(0,201,184,0)}}
@@ -93,12 +93,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </header>
 
 <main>
-  <section class="band">
+  <section class="band" style="padding-bottom:0">
     <div class="wrap hero">
       <span class="kicker reveal"><b aria-hidden="true"></b>SAIT capstone · PROJ 309-SD · Fall 2026</span>
       <h1 class="reveal" style="--d:.08s"><span class="w">Team</span> <span class="w grad">Sixth Sense</span></h1>
-      <p class="lede reveal" style="--d:.16s">Four SAIT students who built the Vencer Operations Dashboard for Vencer Group.</p>
-      <span class="hint reveal" style="--d:.24s"><i aria-hidden="true"></i>Tap anywhere</span>
     </div>
   </section>
 
